@@ -1,0 +1,34 @@
+---
+#
+# Edit these variables as you please
+#
+cl_username: kavauser
+cl_moniker: moniker
+cl_quicksync: pruned # choose between pruned, archive or none(sync from scratch)
+cl_download_dir: "/home/{{ cl_username }}"
+
+#
+# Optional values
+#
+# cl_private_peer: '' # not used if not supplied
+# cl_persistent_peer: '' # not used if not supplied
+# ansible_port: 22 # default 22
+# ansible_user: root # default current username
+
+#
+# No need to edit anything below
+#
+cl_go_url: https://dl.google.com/go/go1.13.12.linux-amd64.tar.gz
+cl_go_sha: 9cacc6653563771b458c13056265aa0c21b8a23ca9408278484e4efde4160618
+cl_network: kava
+cl_service_homedir: "/home/{{ cl_username }}/.kvd"
+cl_service_executable: kvd
+cl_service: kvd
+cl_service_full: kvd.service
+cl_client_executable: kvcli
+cl_chain_id: kava-3
+cl_genesis: https://raw.githubusercontent.com/Kava-Labs/launch/master/kava-3/genesis.json
+cl_repository: Kava-Labs/kava
+cl_version: v0.10.0
+cl_seeds: 036c8fbdc128d3a45faf5aea2dc9f7ff4f7830ca@13.229.196.145:50056,de0665cde03ce0992772abd02fc6b0ae9fe16c0d@3.88.241.174:26656
+cl_persistent_peer: 436148ccfd5fc70ff54bfcf1d8336de9eb002c99@3.208.244.204:26656,4751692ee36c967dec773404601ea8c748b04d97@54.160.8.167:26656,43a8004ece305e1d9407d00bb26958591cbf8ce2@kava01.dokia.cloud:26656
