@@ -122,6 +122,7 @@
     group: "{{ cl_username }}"
     dest: "{{ cl_service_homedir }}/config/addrbook.json"
     mode: '0640'
+  when: cl_addressbook is defined
 
 - name: Backup config
   shell: "cp {{ cl_service_homedir }}/config/config.toml {{ cl_service_homedir }}/config/config.toml.backup"
@@ -137,14 +138,14 @@
 - name: add persistent_peers
   lineinfile:
     path: "{{ cl_service_homedir }}/config/config.toml"
-    regexp: '^persistent_peers'
+    regexp: '^persistent_peers ='
     line: 'persistent_peers = "{{ cl_persistent_peer }}"'
   when: cl_persistent_peer is defined
 
 - name: add private_peers
   lineinfile:
     path: "{{ cl_service_homedir }}/config/config.toml"
-    regexp: '^private_peer_ids'
+    regexp: '^private_peer_ids ='
     line: 'private_peer_ids = "{{ cl_private_peer }}"'
   when: cl_private_peer is defined
 
@@ -167,9 +168,23 @@
     path: "{{ cl_service_homedir }}/config/config.toml"
     regexp: '^indexer'
     line: 'indexer = "null"'
-  when: cl_quicksync == 'pruned' or cl_quicksync == 'default'
+  when: cl_quicksync == 'pruned'
 
-- name: Init Gaiad
+- name: update pruning
+  lineinfile:
+    path: "{{ cl_service_homedir }}/config/app.toml"
+    regexp: '^pruning ='
+    line: 'pruning = "everything"'
+  when: cl_quicksync == 'pruned'
+
+- name: update pruning
+  lineinfile:
+    path: "{{ cl_service_homedir }}/config/app.toml"
+    regexp: '^pruning ='
+    line: 'pruning = "nothing"'
+  when: cl_quicksync == 'archive'
+
+- name: Init blockchain
   shell: "source /home/{{ cl_username }}/.profile && {{ cl_client_executable }} config node http://127.0.0.1:26657 && {{ cl_client_executable }} config chain-id {{ cl_chain_id }}"
   args:
     executable: /bin/bash
@@ -184,7 +199,7 @@
     dest: "/etc/systemd/system/{{ cl_service_full }}"
 
 -  name: Get download filename
-   shell: "curl -s https://terra.quicksync.io/sync.json|jq -r '.[]| select(.network==\"{{ cl_quicksync }}\")|.file'"
+   shell: "curl -s https://kava.quicksync.io/sync.json|jq -r '.[]| select(.network==\"{{ cl_quicksync }}\")|.file'"
    register: cl_filename
 
 - name: Download Quicksync File
@@ -210,7 +225,7 @@
   when: cl_quicksync == 'pruned' or cl_quicksync == 'default' or cl_quicksync == 'archive'
 
 - name: Check hash of checksum file
-  shell: "curl -s https://lcd.terra.dev/txs/`curl -s https://get.quicksync.io/{{ cl_filename.stdout }}.hash`|jq -r '.tx.value.memo'|sha512sum -c"
+  shell: "curl -s https://kava-lcd.chainlayer.net/txs/`curl -s https://get.quicksync.io/{{ cl_filename.stdout }}.hash`|jq -r '.tx.value.memo'|sha512sum -c"
   args:
     executable: /bin/bash
     chdir: "{{ cl_download_dir }}"
@@ -252,8 +267,7 @@
   async: 72000
   poll: 60
 
-
-- name: enable and start gaia!
+- name: enable and start chain!
   systemd:
     name: "{{ cl_service }}"
     state: started

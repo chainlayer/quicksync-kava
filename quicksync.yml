@@ -1,4 +1,4 @@
 ---
-- hosts: terra
+- hosts: kava
   roles:
     - { role: quicksync, become: yes }

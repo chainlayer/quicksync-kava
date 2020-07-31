@@ -1,5 +1,5 @@
 # quicksync-playbooks
-Playbooks to install a terrad node with Chainlayer Quicksync
+Playbooks to install a Kava node with Chainlayer Quicksync
 
 ## Prerequisites
 - on your local machine install ansible
@@ -8,8 +8,8 @@ Playbooks to install a terrad node with Chainlayer Quicksync
 ## Usage
 ```
 git clone https://github.com/chainlayer/quicksync-playbooks.git
-# edit group_vars/terra.yml file
-vim group_vars/terra.yml
+# edit group_vars/kava.yml file
+vim group_vars/kava.yml
 # edit ansible-hosts.yml file
 vim ansible-hosts.yml
 cd quicksync-playbooks
@@ -21,15 +21,15 @@ cd quicksync-playbooks
 #### Cancelled downloads
 If for whatever reason the download is cancelled, you can resume it manually (assuming default variables):
 ```
-sudo su - terrauser
-cd /home/terrauser
-aria2c --continue -x 5 https://get.quicksync.io/columbus-3-pruned.latest.tar.lz4
-cd .terrad
-tar -I lz4 -xf /home/terrauser/columbus-3-pruned.latest.tar.lz4
+sudo su - kavauser
+cd /home/kavauser
+aria2c --continue -x 5 https://get.quicksync.io/kava-3-pruned.20200730.0505.tar.lz4
+cd .kvd
+tar -I lz4 -xf /home/kavauser/kava-3-pruned.20200730.0505.tar.lz4
 exit
-# enable and start terrad with sudo
-sudo systemctl enable terrad
-sudo systemctl start terrad
+# enable and start kava with sudo
+sudo systemctl enable kvd
+sudo systemctl start kvd
 ```
 
 ### Feedback during downloads

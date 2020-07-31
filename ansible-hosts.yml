@@ -1,6 +1,8 @@
 all:
   children:
-    terra:
+    kava:
       hosts:
-        terra-host01:
-          ansible_host: <your hostname here>
+        kava-host01:
+          ansible_host: <your host>
+          ansible_port: 22
+          ansible_user: root
