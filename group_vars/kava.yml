@@ -26,9 +26,9 @@ cl_service_executable: kvd
 cl_service: kvd
 cl_service_full: kvd.service
 cl_client_executable: kvcli
-cl_chain_id: kava-3
-cl_genesis: https://raw.githubusercontent.com/Kava-Labs/launch/master/kava-3/genesis.json
+cl_chain_id: kava-4
+cl_genesis: https://raw.githubusercontent.com/Kava-Labs/launch/master/kava-4/genesis.json
 cl_repository: Kava-Labs/kava
-cl_version: v0.10.0
-cl_seeds: 036c8fbdc128d3a45faf5aea2dc9f7ff4f7830ca@13.229.196.145:50056,de0665cde03ce0992772abd02fc6b0ae9fe16c0d@3.88.241.174:26656
-cl_persistent_peer: 436148ccfd5fc70ff54bfcf1d8336de9eb002c99@3.208.244.204:26656,4751692ee36c967dec773404601ea8c748b04d97@54.160.8.167:26656,43a8004ece305e1d9407d00bb26958591cbf8ce2@kava01.dokia.cloud:26656
+cl_version: v0.12.0
+cl_seeds: 833f31e126d68e5183e5bd795221b4f97c5dcc8c@34.238.200.86:26656
+cl_persistent_peer: 3b14e82a37f581999f96e720e5e16aeb498020c0@3.216.191.96:26656,43a8004ece305e1d9407d00bb26958591cbf8ce2@kava01.dokia.cloud:26656,5d3bb48d1bf7be8db813c43809c57d70de55784e@78.47.104.81:26656,7574e18181f40aceeafeef4aa3feacfcfa4e563c@35.215.42.158:26656
