@@ -56,6 +56,11 @@
   become: yes
   become_user: root
 
+- name: Remove go directory
+  file:
+    path: /usr/local/go
+    state: absent
+
 - name: Extract Go
   unarchive:
     src: "{{ dl_go.dest }}"
