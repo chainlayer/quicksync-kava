@@ -19,7 +19,7 @@ cl_download_dir: "/home/{{ cl_username }}"
 # No need to edit anything below
 #
 cl_go_url: https://golang.org/dl/go1.15.3.linux-amd64.tar.gz
-cl_go_sha: 9cacc6653563771b458c13056265aa0c21b8a23ca9408278484e4efde4160618
+cl_go_sha: 010a88df924a81ec21b293b5da8f9b11c176d27c0ee3962dc1738d2352d3c02d
 cl_network: kava
 cl_service_homedir: "/home/{{ cl_username }}/.kvd"
 cl_service_executable: kvd
