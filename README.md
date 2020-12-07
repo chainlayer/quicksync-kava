@@ -1,4 +1,4 @@
-# quicksync-playbooks
+# quicksync-kava
 Playbooks to install a Kava node with Chainlayer Quicksync
 
 ## Prerequisites
@@ -12,7 +12,7 @@ git clone https://github.com/chainlayer/quicksync-kava.git
 vim group_vars/kava.yml
 # edit ansible-hosts.yml file
 vim ansible-hosts.yml
-cd quicksync-playbooks
+cd quicksync-kava
 ./quicksync
 ```
 
