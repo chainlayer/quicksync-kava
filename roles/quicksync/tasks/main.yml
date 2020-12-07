@@ -204,7 +204,7 @@
     dest: "/etc/systemd/system/{{ cl_service_full }}"
 
 -  name: Get download filename
-   shell: "curl -s https://kava.quicksync.io/sync.json|jq -r '.[]| select(.network==\"{{ cl_quicksync }}\")|.file'"
+   shell: "curl -s https://{{cl_network}}.quicksync.io/sync.json|jq -r '.[]| select(.network==\"{{ cl_quicksync }}\")|.file'"
    register: cl_filename
 
 - name: Download Quicksync File
@@ -230,7 +230,7 @@
   when: cl_quicksync == 'pruned' or cl_quicksync == 'default' or cl_quicksync == 'archive'
 
 - name: Check hash of checksum file
-  shell: "curl -s https://lcd-kava.cosmostation.io/txs/`curl -s https://get.quicksync.io/{{ cl_filename.stdout }}.hash`|jq -r '.tx.value.memo'|sha512sum -c"
+  shell: "curl -s {{cl_lcd_server}}/txs/`curl -s https://get.quicksync.io/{{ cl_filename.stdout }}.hash`|jq -r '.tx.value.memo'|sha512sum -c"
   args:
     executable: /bin/bash
     chdir: "{{ cl_download_dir }}"
