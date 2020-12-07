@@ -18,7 +18,7 @@ cl_download_dir: "/home/{{ cl_username }}"
 #
 # No need to edit anything below
 #
-cl_lcd_server: https://lcd-kava.cosmostation.io/txs
+cl_lcd_server: https://lcd-kava.cosmostation.io/txs/
 cl_go_url: https://golang.org/dl/go1.15.3.linux-amd64.tar.gz
 cl_go_sha: 010a88df924a81ec21b293b5da8f9b11c176d27c0ee3962dc1738d2352d3c02d
 cl_network: kava
