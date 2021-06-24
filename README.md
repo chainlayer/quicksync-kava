@@ -23,9 +23,9 @@ If for whatever reason the download is cancelled, you can resume it manually (as
 ```
 sudo su - kavauser
 cd /home/kavauser
-aria2c --continue -x 5 https://get.quicksync.io/kava-3-pruned.20200730.0505.tar.lz4
+aria2c --continue -x 5 https://get.quicksync.io/kava-7-pruned.20210624.0210.tar.lz4
 cd .kvd
-tar -I lz4 -xf /home/kavauser/kava-3-pruned.20200730.0505.tar.lz4
+tar -I lz4 -xf /home/kavauser/kava-7-pruned.20210624.0210.tar.lz4
 exit
 # enable and start kava with sudo
 sudo systemctl enable kvd
